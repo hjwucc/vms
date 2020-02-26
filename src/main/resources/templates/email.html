@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>你好，
+    <span th:text="${name}"></span>童鞋，平顶山学院导师双选系统通知您：</p>
+    <span><strong>互选成功！</strong></span></br>
+    <span>以下为导师相关信息：</span>
+<table border="1" cellspacing="0">
+    <tr>
+        <td><strong style="color: #F00">导师姓名</strong></td>
+        <td th:text="${name}"></td>
+    </tr>
+    <tr>
+        <td><strong style="color: #F00">手机号码</strong></td>
+        <!--/*@thymesVar id="phone" type="java"*/-->
+        <td th:text="${phone}"></td>
+    </tr>
+    <tr>
+        <td><strong style="color: #F00">邮箱</strong></td>
+        <!--/*@thymesVar id="email" type="java"*/-->
+        <td th:text="${email}"></td>
+    </tr>
+</table>
+<p>
+    <strong style="color: #F00; font-size: 24px;">
+        希望在未来的日子里，携手共进!
+    </strong>
+</p>
+</body>
+</html>

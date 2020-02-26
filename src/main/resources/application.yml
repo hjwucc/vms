@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    username: root
+    password: '123456'
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/mentor-stu
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    throw-exception-if-no-handler-found: true
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: wmnihaoya@qq.com
+    password: xmqbwatzdergdhce
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+server:
+  port: 8081
