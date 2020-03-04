@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.web.cors.CorsUtils;
+
 
 /**
  * @author ：wuba
@@ -34,7 +36,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
+        http.cors()
+                .and()
+                //关闭防止请求伪造
+                .csrf()
+                .disable()
+                .authorizeRequests()
+                //处理跨域请求中的Preflight请求
+                .requestMatchers(CorsUtils::isPreFlightRequest )
+                .permitAll()
+                .and()
+                .formLogin()
                 .loginPage("/login.html")
                 .loginProcessingUrl("/user/login")
                 .failureHandler(failureHandler)
@@ -55,10 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login.html","/swagger-ui.html","/v2/**","/swagger-resources/**","/user/menu")
                 .permitAll()
                 .anyRequest()
-                .authenticated()
-            .and()
-            //关闭防止请求伪造
-            .csrf()
-                .disable();
+                .authenticated();
     }
 }

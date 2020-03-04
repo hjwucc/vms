@@ -27,7 +27,7 @@ public class MyAuthenticationFailureHandler implements AuthenticationFailureHand
         response.setStatus(401);
         Map<String,Object> map = new HashMap<>();
         Map<String,Object> responseData = new HashMap<>();
-        map.put("errCode","20002");
+        map.put("errCode","20004");
         if(e instanceof LockedException){
             map.put("errMsg","账户被锁定");
         }else if(e instanceof BadCredentialsException){
